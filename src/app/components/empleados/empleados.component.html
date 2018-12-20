@@ -1,0 +1,63 @@
+<div *ngIf="empleados?.length > 0">
+  <ul *ngFor="let empleado of empleados" class="collection">
+    <li class="collection-item">
+      <a href="#" class="secondary-content">
+        <i *ngIf="editState == false" (click)="editEmpleado($event, empleado)" class="material-icons">mode_edit</i>
+        <i *ngIf="editState && empleadoToEdit.id ==empleado.id" (click)="clearState()" class="material-icons">close</i>
+      </a>
+      <h5><strong>{{empleado.nombre}} {{empleado.apellido}}</strong></h5>
+      <blockquote>DATOS</blockquote>
+      <div class="row">
+        <div class="input-field col s12">
+          <span><strong>Email:</strong> {{empleado.email}}</span>
+        </div>
+        <div class="input-field col s12">
+          <span><strong>DNI:</strong> {{empleado.dni}}</span>
+        </div>
+        <div class="input-field col s12">
+          <span><strong>Dirección:</strong> {{empleado.direccion}}</span>
+        </div>
+        <div class="input-field col s12">
+          <span><strong>Ciudad:</strong> {{empleado.ciudad}}</span>
+        </div>
+      </div>
+        <hr>
+        <div *ngIf="editState && empleadoToEdit.id == empleado.id">
+            <form  (ngSubmit)="updateEmpleado(empleado)" class="col s6">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="empleado.nombre">
+                    <label>Nombre</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="empleado.apellido">
+                    <label>Apellido</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input type="email" name="email" #email="ngModel" [(ngModel)]="empleado.email">
+                    <label>Email</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input type="text" name="dni" #dni="ngModel" [(ngModel)]="empleado.dni">
+                    <label>DNI</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input type="text" name="direccion" #direccion="ngModel" [(ngModel)]="empleado.direccion">
+                    <label>Direccion</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input type="text" name="ciudad" #ciudad="ngModel" [(ngModel)]="empleado.ciudad">
+                    <label>Ciudad</label>
+                  </div>
+                  <button (click)="deleteEmpleado($event, empleado)" class="btn red right">Borrar
+                    <i class="material-icons right">delete_forever</i>
+                  </button>
+                  <button type="submit" class="btn orange">Actualizar
+                      <i class="material-icons right">save</i>
+                  </button>
+                </div>
+              </form>
+        </div>
+    </li>
+  </ul>
+</div>

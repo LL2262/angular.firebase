@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Nuevo Empleado</span>
+    <form #empleadoForm="ngForm" (ngSubmit)="onSubmit()" class="col s6">
+      <div class="row">
+        <div class="input-field col s6">
+          <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="empleado.nombre" placeholder="Nombre empleado">
+          <label>Nombre</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="empleado.apellido" placeholder="Apellido empleado">
+          <label>Apellido</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="email" name="email" #email="ngModel" [(ngModel)]="empleado.email" placeholder="Email empleado">
+          <label>Email</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" name="dni" #dni="ngModel" [(ngModel)]="empleado.dni" placeholder="DNI empleado">
+          <label>DNI</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" name="direccion" #direccion="ngModel" [(ngModel)]="empleado.direccion" placeholder="Direccion empleado">
+          <label>Direccion</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" name="ciudad" #ciudad="ngModel" [(ngModel)]="empleado.ciudad" placeholder="Ciudad empleado">
+          <label>Ciudad</label>
+        </div>
+        <button type="submit" class="btn-floating btn-medium waves-effect waves-light orange right"><i class="material-icons">add</i></button>
+      </div>
+    </form>
+  </div>
+</div>
