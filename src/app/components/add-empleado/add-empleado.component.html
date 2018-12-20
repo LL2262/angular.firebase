@@ -1,33 +1,39 @@
 <div class="card">
   <div class="card-content">
     <span class="card-title">Nuevo Empleado</span>
-    <form #empleadoForm="ngForm" (ngSubmit)="onSubmit()" class="col s6">
+    <form #empleadoForm="ngForm" (ngSubmit)="onSubmit(empleadoForm)" class="col s6">
       <div class="row">
         <div class="input-field col s6">
-          <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="empleado.nombre" placeholder="Nombre empleado">
+          <input type="text" class="validate" name="nombre" #nombre="ngModel" [(ngModel)]="empleado.nombre" placeholder="Nombre empleado" required>
           <label>Nombre</label>
+          <span *ngIf="!nombre.valid && nombre.touched" class="helper-text" data-error="El nombre es obligatorio"></span>
         </div>
         <div class="input-field col s6">
-          <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="empleado.apellido" placeholder="Apellido empleado">
+          <input type="text" class="validate" name="apellido" #apellido="ngModel" [(ngModel)]="empleado.apellido" placeholder="Apellido empleado" required>
           <label>Apellido</label>
+          <span *ngIf="!apellido.valid && apellido.touched" class="helper-text" data-error="El apellido es obligatorio"></span>
         </div>
         <div class="input-field col s6">
-          <input type="email" name="email" #email="ngModel" [(ngModel)]="empleado.email" placeholder="Email empleado">
+          <input type="email" class="validate" name="email" #email="ngModel" [(ngModel)]="empleado.email" placeholder="Email empleado" required>
           <label>Email</label>
+          <span *ngIf="!email.valid && email.touched" class="helper-text" data-error="El email es obligatorio"></span>
         </div>
         <div class="input-field col s6">
-          <input type="text" name="dni" #dni="ngModel" [(ngModel)]="empleado.dni" placeholder="DNI empleado">
+          <input type="text" class="validate" name="dni" #dni="ngModel" [(ngModel)]="empleado.dni" placeholder="DNI empleado" required>
           <label>DNI</label>
+          <span *ngIf="!dni.valid && dni.touched" class="helper-text" data-error="El dni es obligatorio"></span>
         </div>
         <div class="input-field col s6">
-          <input type="text" name="direccion" #direccion="ngModel" [(ngModel)]="empleado.direccion" placeholder="Direccion empleado">
+          <input type="text" class="validate" name="direccion" #direccion="ngModel" [(ngModel)]="empleado.direccion" placeholder="Direccion empleado" required>
           <label>Direccion</label>
+          <span *ngIf="!direccion.valid && direccion.touched" class="helper-text" data-error="La dirección es obligatoria"></span>
         </div>
         <div class="input-field col s6">
-          <input type="text" name="ciudad" #ciudad="ngModel" [(ngModel)]="empleado.ciudad" placeholder="Ciudad empleado">
+          <input type="text" class="validate" name="ciudad" #ciudad="ngModel" [(ngModel)]="empleado.ciudad" placeholder="Ciudad empleado" required>
           <label>Ciudad</label>
+          <span *ngIf="!ciudad.valid && ciudad.touched" class="helper-text" data-error="La ciudad es obligatoria"></span>
         </div>
-        <button type="submit" class="btn-floating btn-medium waves-effect waves-light orange right"><i class="material-icons">add</i></button>
+        <button type="submit" [disabled]="!empleadoForm.form.valid" class="btn-floating btn-medium waves-effect waves-light orange right"><i class="material-icons">add</i></button>
       </div>
     </form>
   </div>

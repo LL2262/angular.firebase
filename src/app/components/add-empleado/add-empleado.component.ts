@@ -18,14 +18,16 @@ export class AddEmpleadoComponent implements OnInit {
   }
 
   constructor(private _empleadoService: EmpleadoService) {
-    
+
    }
 
   ngOnInit() {
+    
   }
 
-  onSubmit(){
+  onSubmit(empleadoForm){
     this._empleadoService.addEmpleado(this.empleado);
+    empleadoForm.reset();
   }
 
 }
